@@ -1,6 +1,8 @@
 # AMSwarm Repository Code
 
+Details to follow
+
 ### Installation
-### Demo
+### Demos
 ### Configuration
 ### Notes
