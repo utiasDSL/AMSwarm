@@ -1,0 +1,14 @@
+num_drones: [10, 20, 30, 40, 50]
+
+# point-to-point comparsion
+read_config: false
+start_config: 0
+end_config: 100
+
+
+# use model is false then next state is set to the optimization's solution
+use_model: false
+noise: [0.0, 0.0]
+
+
+
