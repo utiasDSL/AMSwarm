@@ -8,7 +8,6 @@
     * Distributed Trajectory Optimization with Optimal Control Solver ACADO (incorporating Barrier Function constraints)
 * Supplementart Material:
     * Detailed experimental setup
-    * Evaluation metric trends
 
 
 ### References
