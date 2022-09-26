@@ -77,8 +77,6 @@ namespace Optim
     Eigen :: ArrayXXf diff(Eigen :: ArrayXXf arr);
 
     int computeXYZ(probData &prob_data, int VERBOSE);
-    int computeXYZ2(probData &prob_data, int VERBOSE);
-    // int computeXYZ_2(probData &prob_data, int VERBOSE);
 
     void initObstacles(probData &prob_data, int VERBOSE);
     void neigbhoringAgents(probData &prob_data, int VERBOSE);

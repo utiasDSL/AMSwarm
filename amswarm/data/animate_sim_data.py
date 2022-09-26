@@ -34,12 +34,9 @@ a_obs = dim_obs[:,0]
 b_obs = dim_obs[:,1]
 c_obs = dim_obs[:,2]
 
-# x_lim = [-2, 2]
-# y_lim = [-2, 2]
-# z_lim = [+0, 2]
-x_lim = [-4, 4]
-y_lim = [-4, 4]
-z_lim = [+0, 2]
+x_lim = [-2, 2]
+y_lim = [-2, 2]
+z_lim = [+0.2, 2.2]
 
 
 

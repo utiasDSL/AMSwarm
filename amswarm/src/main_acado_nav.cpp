@@ -358,7 +358,7 @@ int main( )
     std :: vector<float> comp_time_agent, slack_norm_agent, inter_agent_dist;
     
 
-    save_data.open(path+"/data/acado_cbf/sim_data_acado"+ std::to_string(num_drone)+".txt");
+    save_data.open(path+"/data/sim_data_acado.txt");
     for(sim_iter = 0; sim_iter < max_time/dt;){
 
         int state_sum  = 0;

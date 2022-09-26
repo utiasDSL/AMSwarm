@@ -22,7 +22,7 @@ source devel/setup.bash
 |SCP (Ondemand)|  ```config_scp_swarm.yaml``` set ```on-demand``` to ```true```| ``` rosrun amswarm swarm_scp_nav```|
 |ACADO | ```config_acado_swarm.yaml```|``` rosrun amswarm swarm_acado_nav_"num_drone" ``` num_drone = {2, 4, 6, 8}|
 
-After running any of the approach, it should display success or faliure. To visulaize the simulated data run ```python animate_sim_data.py``` in the ```data``` folder.
+After running any of the approach, it should display success or faliure. To visulaize the simulated data run ```python animate_sim_data.py``` in the ```data``` folder for approches except for ACADO. For ACADO, run ```python animate_acado.py```. Run any approach with the current configuration and visualize using the corresponding python file.
 
 ### Changing Configuration
 

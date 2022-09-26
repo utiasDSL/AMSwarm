@@ -18,7 +18,8 @@ int main()
     std :: vector<float> num_drones = params["num_drones"].as<std::vector<float>>();
 
     for(int j = 0; j < num_drones.size(); j++){
-        ROS_INFO_STREAM("Agent size = " << num_drones[j] << " Configuration numbers = " << end_config - start_config + 1);
+        if(read_config)
+            ROS_INFO_STREAM("Agent size = " << num_drones[j] << " Configuration numbers = " << end_config - start_config + 1);
         int success_trials = 0;
         for(int i = start_config; i < end_config; i++){
             Simulator sim = Simulator(i, read_config, num_drones[j], use_model, noise);
