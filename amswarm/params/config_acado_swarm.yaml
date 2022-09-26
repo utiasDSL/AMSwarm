@@ -1,10 +1,7 @@
-# @@ Debugging Options
-verbose: 0
-
 # @@ Hardcoded variables
 num:       30                
 t_plan:    3
-max_drone: 2
+max_drones: 2
 
 x_lim: [-2.0, 2.0]
 y_lim: [-2.0, 2.0]
@@ -15,7 +12,7 @@ gravity: 9.8
 f_max: 1.5    # 1.5g
 f_min: 0.3    # 0.3g
 
-# @@ CBF
+# @@ BF Constraints
 gamma: 0.9
 
 # @@ Planning Parameters
@@ -54,18 +51,3 @@ goal_drone: [[+1.0, +1.0, 0.5],
              [+1.0, +0.0, 0.5],
              [+0.0, -1.0, 0.5],
              [-0.0, +1.0, 0.5]]
-
-
-
-# HARD CODED VARIABLES
-# num:    30                
-# t_plan: 3
-
-# # @@ True Kinematics
-# vel_max: 1.73
-# gravity: 9.8
-# f_max: 1.5    # 1.5g
-# f_min: 0.3    # 0.3g
-
-# max_drone: 8          
-# num_drone: 8           

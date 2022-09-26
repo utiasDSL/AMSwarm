@@ -1,0 +1,55 @@
+#________________ @@ Variables used by code generation file i.e. hardcoded in generated codes______________
+num:        30                
+t_plan:     3
+max_drones: 2
+
+x_lim: [-2.0, 2.0]
+y_lim: [-2.0, 2.0]
+z_lim: [+0.0, 2.0]
+
+vel_max: 1.73 # maximum speed in m/s
+gravity: 9.8  # acceleration due to gravity  
+f_max: 1.5    # 1.5 * gravity; maximum collective thrust in m/s^2
+f_min: 0.3    # 0.3 * gravity; minimum collective thrust in m/s^2
+________________________________________________________________________________
+
+
+# @@ BF
+gamma: 0.9                  # gamma in the barrier function constraints
+________________________________________________________________________________
+# @@ Planning Parameters
+dist_stop: 0.2              # distance-to-goal tolerance to stop the simulation
+
+# @@ Optimizer Parameters
+max_iter: 5                 # warm-up iterations for ACADO
+max_time: 20                # maximum mission time limit
+
+weight_goal:       +1.0E+8      # weight of goal cost term
+weight_quad_slack: +1.0E+15     # weight of slack penalization 
+weight_smoothness: +1.0E+5      # weight of smoothness term (q == 2)
+
+# @@ Crazyflie Configuration
+a_drone: 0.0675                 # dimension of ellipsoid where collision is check 
+b_drone: 0.0675
+c_drone: 0.2000
+
+buffer: 0.05                    # buffer added to the above ellipsoid
+
+# @@ Start-Goal Configuration
+init_drone: [[-1.0, -1.0, 0.5],             # [x, y, z]
+             [+1.0, +1.0, 0.5],             
+             [+1.0, -1.0, 0.5],             
+             [-1.0, +1.0, 0.5],
+             [+1.0, +0.0, 0.5],
+             [-1.0, +0.0, 0.5],
+             [+0.0, +1.0, 0.5],
+             [-0.0, -1.0, 0.5]]
+
+goal_drone: [[+1.0, +1.0, 0.5],             # [x, y, z]
+             [-1.0, -1.0, 0.5],             
+             [-1.0, +1.0, 0.5],            
+             [+1.0, -1.0, 0.5],
+             [-1.0, +0.0, 0.5],
+             [+1.0, +0.0, 0.5],
+             [+0.0, -1.0, 0.5],
+             [-0.0, +1.0, 0.5]]

@@ -1,0 +1,158 @@
+# @@ Debugging Options
+verbose: 0      # Residual print = 1, DistanceToGoal check = 2, Collision print = 3, Compute time print = 4, Scaled Thurst print = 5
+                              
+num_drone: 8    # ignored if read_config is false
+num_obs: 16     # ignored if read_config is false. Note this doesn't truncate the obstacles config provided below
+
+# @@ For axis_wise set true otherwise quadratic
+axis_wise: false     
+jerk_snap_constraints: false                # if set true quadratic jerk and snap constraints will be applied
+
+# @@ BF 
+gamma: 1.0                                  # gamma in the barrier function constraints
+
+# @@ Planning Parameters
+world:      3                               # 2D or 3D
+num:        30                              # Number of planning steps
+t_plan:     3                               # Planning time 
+num_up:     300                             # Upsampling "num"
+dist_stop:  0.2                             # distance-to-goal tolerance to stop the simulation
+free_space: true                            # if set true, static obstacles are removed
+kappa:      15                              # kappa in the goal cost term
+
+
+# @@ Optimizer Parameters
+max_iter: 3000                              # maximum number of optimization iterations
+max_time: 20                                # maximum mission time limit
+thresold: 0.01                              # augmented constraints residual thresold in the AM algorithm
+
+order_smoothness:  4                        # smoothness penalization order (eg. setting to 4 penalizes snap)
+weight_goal:       7000                     # weight of goal cost term
+weight_smoothness: 100                      # weight of smoothness term 
+delta_aggressive:  1                        # unused variable
+
+delta_static_obs: 1.3                       # penalty parameter rho in the AM algorithm (eg. rho_static_obs at l iteration of AM  = 1.3^{l}*rho)
+delta_drone:      1.3
+delta_vel:        1.3
+delta_acc:        1.3
+delta_jerk:       1.3
+delta_snap:       1.3
+delta_ineq:       1.3
+
+rho_static_obs_max: 50000000                # caps the penalty paramter (eg. rho-rho_static_obs = min(1.3^{l}*rho, 50000000))
+rho_drone_max:      50000000
+rho_vel_max:        50000000
+rho_acc_max:        50000000
+rho_jerk_max:       50000000
+rho_snap_max:       50000000
+rho_ineq_max:       50000000
+
+# true kinematic values
+vel_max: 1.5                                # maximum speed in m/s
+jerk_max: 8.0                               # maximum jerk in m/s3
+snap_max: 8.0                               # maximum snap in m/s4
+
+# scaled thrust values 
+use_thrust_values: true                     # use accleration constraints that has the gravity component. If true, the constraint is f_min^2 <= ax^2 + ay^2 + (az+g)^2 <= f_max^2.
+                                            # otherwise, ax^2 + ay^2 + az^2 < acc_max^2
+gravity: 9.8                                # acceleration due to gravity
+f_max: 1.5                                  # 1.5*gravity; maximum collective thrust in m/s^2                        
+f_min: 0.3                                  # 0.3*gravity; minimum collective thrust in m/s^2 
+
+
+acc_max: 2.8                                # if use_thrust_values is set to false use this
+
+
+
+# @@ Crazyflie Configuration 
+a_drone: 0.075                              # dimension of ellipsoid where collision is check 
+b_drone: 0.075
+c_drone: 0.2400
+
+buffer: 0.06                                 # buffer added to the above ellipsoid
+
+prox_agent: 0.2                             # this number is added to the collision avoidance ellipsoid to check for possible conflict
+prox_obs: 0.2
+
+# @@ Room limits
+x_lim: [-2.0, 2.0]
+y_lim: [-2.0, 2.0]
+z_lim: [+0.2, 2.2]
+
+
+
+# @@ Obstacle Configuration 
+
+pos_static_obs: [[-1.359,  1.535,  0.   ],              # [x y z]
+                [-0.708,  1.038,  0.   ],
+                [-0.046,  1.452,  0.   ],
+                [ 0.424,  1.006,  0.   ],
+                [ 0.969,  1.484,  0.   ],
+                [-1.146,  0.37 ,  0.   ],
+                [-0.484,  0.285,  0.   ],
+                [-0.003, -0.128,  0.   ],
+                [ 0.744,  0.37 ,  0.   ],
+                [ 1.139, -0.309,  0.   ],
+                [ 0.84 , -1.03 ,  0.   ],
+                [ 0.029, -0.829,  0.   ],
+                [-0.644, -0.701,  0.   ],
+                [-1.135, -1.179,  0.   ],
+                [-1.349, -0.394,  0.   ],
+                [-0.441, -1.518,  0.   ],
+                [ 0.264, -1.56 ,  0.   ],
+                [ 1.31 , -1.497,  0.   ],
+                [-1.562, -1.624,  0.   ],
+                [-1.53 ,  0.837,  0.   ]]
+
+dim_static_obs: [[+0.13, +0.13, 10.0],            # [a b c]         static obstacles are modelled as cylinders 
+                [+0.13, +0.13, 10.0],             
+                [+0.13, +0.13, 10.0],             
+                [+0.13, +0.13, 10.0],             
+                [+0.13, +0.13, 10.0],            
+                [+0.13, +0.13, 10.0],             
+                [+0.13, +0.13, 10.0],             
+                [+0.13, +0.13, 10.0],             
+                [+0.13, +0.13, 10.0],             
+                [+0.13, +0.13, 10.0],             
+                [+0.13, +0.13, 10.0],              
+                [+0.13, +0.13, 10.0],              
+                [+0.13, +0.13, 10.0], 
+                [+0.13, +0.13, 10.0], 
+                [+0.13, +0.13, 10.0], 
+                [+0.13, +0.13, 10.0], 
+                [+0.13, +0.13, 10.0], 
+                [+0.13, +0.13, 10.0], 
+                [+0.13, +0.13, 10.0], 
+                [+0.13, +0.13, 10.0]] 
+
+init_drone: [[-0.0, -0.0, 0.5],
+          [-1.5, -1.5, 0.5],
+          [+1.5, +1.5, 0.5],
+          [+1.5, -1.5, 0.5],
+          [-1.5, +1.5, 0.5],
+          [+1.5, +0.0, 0.5],
+          [-1.5, +0.0, 0.5],
+          [+0.0, +1.5, 0.5],
+          [-0.0, -1.5, 0.5],
+          [-1.5, -0.75, 0.5],
+          [+1.5, +0.75, 0.5],
+          [+1.5, -0.75, 0.5],
+          [-1.5, +0.75, 0.5],
+          [-0.75, -1.5, 0.5],
+          [+0.75, +1.5, 0.5]]
+
+goal_drone: [[-0.0, -0.0, 0.5],     
+          [+1.5, +1.5, 0.5],    
+          [-1.5, -1.5, 0.5],    
+          [-1.5, +1.5, 0.5],    
+          [+1.5, -1.5, 0.5],    
+          [-1.5, +0.0, 0.5],    
+          [+1.5, -0.0, 0.5],    
+          [-0.0, -1.5, 0.5],    
+          [+0.0, +1.5, 0.5],    
+          [+1.5, +0.75, 0.5],   
+          [-1.5, -0.75, 0.5],   
+          [-1.5, +0.75, 0.5],  
+          [+1.5, -0.75, 0.5],   
+          [+0.75, +1.5, 0.5],
+          [-0.75, -1.5, 0.5]]   

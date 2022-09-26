@@ -1,6 +1,6 @@
 verbose: 0
-num_drone: 8
-num_obs: 16  # ignored if read_config is false
+num_drone: 8 # ignored if read_config is false
+num_obs: 16  # ignored if read_config is false. Note this doesn't truncate the obstacles config provided below
 
 
 
@@ -12,44 +12,47 @@ on_demand: true
 
 
 # @@ Optimizer parameters
-world:      3   
-num:        30
-t_plan:     3
-num_up:     300
-dist_stop:  0.2
-free_space: true
-kappa:      15
+world:      3           # 2D or 3D
+num:        30          # Number of planning steps
+t_plan:     3           # Planning time 
+num_up:     300         # Upsampling "num"
+dist_stop:  0.2         # distance-to-goal tolerance to stop the simulation
+free_space: true        # if set true, static obstacles are removed
+kappa:      15          # kappa in the goal cost term
 
-max_time:   20
+max_time:   20          # maximum mission time limit
 
-order_smoothness: 4
-weight_goal:       7000
-weight_smoothness: 100
-weight_quad_slack: 50
-weight_lin_slack: 50000
+order_smoothness: 4     # smoothness penalization order (eg. setting to 4 penalizes snap). Note each order may require tuning of below weights.
+weight_goal:       7000 # weight of goal cost term
+weight_smoothness: 100  # weight of smoothness term 
+weight_quad_slack: 50   # weight of quadratic slack term
+weight_lin_slack: 50000 # weight of linear slack term
 
 
 # @@ Crazflie Configuration
 # true kinematic values
-vel_max: 1.73
+vel_max: 1.73           # maximum speed in m/s 
 
 # scaled thrust values 
-use_thrust_values: true
-f_max: 1.5    # 1.5g
-f_min: 0.3    # 0.3g
-gravity: 9.8
+use_thrust_values: true # use accleration constraints that has the gravity component. If true, the constraint is f_min^2 <= ax^2 + ay^2 + (az+g)^2 <= f_max^2. 
+                        # otherwise, ax^2 + ay^2 + az^2 < acc_max^2. Note SCP will decouple this constraint in each direction.
+f_max: 1.5              # 1.5*gravity; maximum collective thrust in m/s^2                        
+f_min: 0.3              # 0.3*gravity; minimum collective thrust in m/s^2 
+gravity: 9.8            # acceleration due to gravity
 
-acc_max: 2.0
+acc_max: 2.8            # if use_thrust_values is set to false use this
 
-
-a_drone: 0.075
+# @@ Crazyflie Configuration 
+a_drone: 0.075          # dimension of ellipsoid where collision is check 
 b_drone: 0.075
 c_drone: 0.24
 
-prox_agent: 0.2
+buffer:  0.06           # buffer added to the above ellipsoid
+
+prox_agent: 0.2         # this number is added to the collision avoidance ellipsoid to check for possible conflict with other quadrotors
 prox_obs: 0.2
 
-buffer:  0.06
+
 
 
 # @@ Room limits
@@ -101,7 +104,6 @@ dim_static_obs: [[+0.13, +0.13, 10.0],
                 [+0.13, +0.13, 10.0], 
                 [+0.13, +0.13, 10.0]] 
 
-# @ Start-Goal Configuration                
 init_drone: [[-0.0, -0.0, 0.5],
           [-1.5, -1.5, 0.5],
           [+1.5, +1.5, 0.5],
@@ -118,18 +120,18 @@ init_drone: [[-0.0, -0.0, 0.5],
           [-0.75, -1.5, 0.5],
           [+0.75, +1.5, 0.5]]
 
-goal_drone: [[-0.0, -0.0, 0.5],    
+goal_drone: [[-0.0, -0.0, 0.5],     
           [+1.5, +1.5, 0.5],   
-          [-1.5, -1.5, 0.5],    
-          [-1.5, +1.5, 0.5],    
-          [+1.5, -1.5, 0.5],    
-          [-1.5, +0.0, 0.5],    
-          [+1.5, -0.0, 0.5],    
-          [-0.0, -1.5, 0.5],    
-          [+0.0, +1.5, 0.5],    
+          [-1.5, -1.5, 0.5],   
+          [-1.5, +1.5, 0.5],   
+          [+1.5, -1.5, 0.5],   
+          [-1.5, +0.0, 0.5],  
+          [+1.5, -0.0, 0.5],   
+          [-0.0, -1.5, 0.5],   
+          [+0.0, +1.5, 0.5],   
           [+1.5, +0.75, 0.5],   
-          [-1.5, -0.75, 0.5],   
-          [-1.5, +0.75, 0.5],   
-          [+1.5, -0.75, 0.5],   
+          [-1.5, -0.75, 0.5],  
+          [-1.5, +0.75, 0.5],  
+          [+1.5, -0.75, 0.5],  
           [+0.75, +1.5, 0.5],
           [-0.75, -1.5, 0.5]]   
