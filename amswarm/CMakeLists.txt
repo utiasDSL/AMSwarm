@@ -19,12 +19,12 @@ find_package(ACADO REQUIRED)
 
 catkin_package(
 )
-add_subdirectory(submodules/qpOASES)
+# add_subdirectory(submodules/qpOASES)
 
 include_directories(
 include
 ${catkin_INCLUDE_DIRS}
-submodules/qpOASES/include
+# submodules/qpOASES/include
 )
 
 # AM 
@@ -38,7 +38,7 @@ target_link_libraries(swarm_am_nav lib_am_swarm eigen-quadprog yaml-cpp ${catkin
 add_library(lib_scp_swarm src/algorithm/optim_scp_swarm.cpp src/simulator/sim_scp_swarm.cpp)
 add_executable(swarm_scp_nav src/main_scp_swarm.cpp)
 add_dependencies(swarm_scp_nav ${catkin_EXPORTED_TARGETS})
-target_link_libraries(swarm_scp_nav lib_scp_swarm eigen-quadprog yaml-cpp qpOASES ${catkin_LIBRARIES})
+target_link_libraries(swarm_scp_nav lib_scp_swarm eigen-quadprog yaml-cpp ${catkin_LIBRARIES})
 
 
 # # GEN ACADO
