@@ -59,6 +59,7 @@ ax.set_title('Trajectory')
 ax.set_xlabel('x in m')
 ax.set_ylabel('y in m')
 ax.set_zlabel('z in m')
+ax.view_init(elev=60, azim=-77)
 
 ax.set_xlim(x_lim[0], x_lim[1])
 ax.set_ylim(y_lim[0], y_lim[1])

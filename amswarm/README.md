@@ -27,3 +27,7 @@ After running any of the approach, it should display success or faliure. To visu
 ### Changing Configuration
 
 Change various parameters in ```some_file_name.yaml``` files of folder ```params```. You can find description of each paramter in the ```some_file_name.txt```.
+
+
+### Example Scenario
+[example](data/example.gif)
