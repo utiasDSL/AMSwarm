@@ -30,4 +30,6 @@ Change various parameters in ```some_file_name.yaml``` files of folder ```params
 
 
 ### Example Scenario
-[example](data/example.gif)
+
+Ours in action:  
+![example](data/example.gif)
