@@ -15,7 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   roslib
 )
 find_package(eigen-quadprog)
-find_package(ACADO REQUIRED)
+# find_package(ACADO REQUIRED)
 
 catkin_package(
 )

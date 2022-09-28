@@ -35,5 +35,4 @@ Ours in action:
 ![example](data/example.gif)
 
 ### To-do list
-* Remove dependency on ACADO toolkit by removing code generation option.
 * Clone and test code in a different machine. 
