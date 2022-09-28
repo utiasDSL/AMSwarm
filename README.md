@@ -9,6 +9,9 @@
 * Supplementart Material:
     * Detailed experimental setup
 
+### Simulation Environment Example
+
+![sim_env](amswarm/data/sim_env.png)
 
 ### References
 [1] Soria, Enrica, Fabrizio Schiano, and Dario Floreano. "Distributed Predictive Drone Swarms in Cluttered Environments." IEEE Robotics and Automation Letters 7.1 (2021): 73-80.    
