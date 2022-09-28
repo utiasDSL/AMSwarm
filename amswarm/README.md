@@ -1,8 +1,9 @@
 # AMSwarm Repository Code
 
 ### Installation
-* Dependencies:  
-[eigen_quad_prog](https://github.com/jrl-umi3218/eigen-quadprog)
+This work is implemented in C++17 and tested on ROS Melodic.  
+* Install [ROS](http://wiki.ros.org/ROS/Installation)
+* Install [eigen_quad_prog](https://github.com/jrl-umi3218/eigen-quadprog)  
 
 * Clone and build the package as follows:  
 ``` 
@@ -26,7 +27,7 @@ After running any of the approach, it should display success or faliure. To visu
 
 ### Changing Configuration
 
-Change various parameters in ```some_file_name.yaml``` files of folder ```params```. You can find description of each paramter in the ```some_file_name.txt```.
+Change various parameters in ```some_file_name.yaml``` files of folder ```params```. You can find description of each paramter in the ```some_name_help.txt```.
 
 
 ### Example Scenario
