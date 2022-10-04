@@ -35,5 +35,6 @@ Change various parameters in ```some_file_name.yaml``` files of folder ```params
 Ours in action:  
 ![example](data/example.gif)
 
-### To-do list
+### Notes
 * Clone and test code in a different machine. 
+* Clean and fix issues in ```world``` to ```2```.

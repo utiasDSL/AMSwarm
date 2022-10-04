@@ -12,7 +12,7 @@
 ### Simulation Environment Example
 
 ![sim_env](amswarm/data/sim_env.png)  
-_Fig. 40 robots in a forest-like cluttered environment. Dark-colored ellipses are robots and light-colored ellipses are respective goals of each robot. Red-dashed lines represent a workable space, and tall blue cylinders are static obstacles._
+_Fig. 40 quadrotors in a forest-like cluttered environment. Dark-colored ellipsoids are quadrotors and light-colored ellipsoids are respective goals of each quadrotor. Red-dashed lines represent a workable space, and tall blue cylinders are static obstacles._
 
 ### References
 [1] Soria, Enrica, Fabrizio Schiano, and Dario Floreano. "Distributed Predictive Drone Swarms in Cluttered Environments." IEEE Robotics and Automation Letters 7.1 (2021): 73-80.    
