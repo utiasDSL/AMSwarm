@@ -3,7 +3,9 @@
 ### Installation
 This work is implemented in C++17 and tested on ROS Melodic.  
 * Install [ROS](http://wiki.ros.org/ROS/Installation)
-* Install [eigen_quad_prog](https://github.com/jrl-umi3218/eigen-quadprog)  
+* Install [eigen_quad_prog](https://github.com/jrl-umi3218/eigen-quadprog) and run ```sudo ln -s /usr/include/eigen3/Eigen /usr/include/Eigen
+
+```.
 
 * Clone and build the package as follows:  
 ``` 
@@ -36,5 +38,4 @@ Ours in action:
 ![example](data/example.gif)
 
 ### Notes
-* Clone and test code in a different machine. 
 * Clean and fix issues in ```world``` to ```2```.
