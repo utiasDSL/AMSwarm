@@ -37,3 +37,6 @@ Ours in action:
 
 ### Notes
 * Clean and fix issues in ```world``` to ```2```.
+
+### Contact
+vivek.adajania@mail.utoronto.ca
