@@ -1,7 +1,7 @@
 # AMSwarm Repository Code
 
 ### Installation
-This work is implemented in C++17 and tested on ROS Melodic.  
+This work is implemented in C++17 and tested on ROS Melodic and Noetic.  
 * Install [ROS](http://wiki.ros.org/ROS/Installation)
 * Install [eigen_quad_prog](https://github.com/jrl-umi3218/eigen-quadprog) and run ```sudo ln -s /usr/include/eigen3/Eigen /usr/include/Eigen```.
 
