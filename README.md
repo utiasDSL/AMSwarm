@@ -1,5 +1,7 @@
 # AMSwarm Repository 
 
+Repository associated with paper titled "AMSwarm: An Alternating Minimization Approach for Safe Motion Planning of Quadrotor Swarms in Cluttered Environments", to be presented at IEEE ICRA 2023.
+
 ### What's included
 
 * Codes: 
