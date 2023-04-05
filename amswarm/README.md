@@ -35,8 +35,8 @@ Change various parameters in ```some_file_name.yaml``` files of folder ```params
 Ours in action:  
 ![example](data/example.gif)
 
-### Notes
-* Clean and fix issues in ```world``` to ```2```.
+### To do
+* Remove ROS dependency.
 
 ### Contact
 vivek.adajania@mail.utoronto.ca
