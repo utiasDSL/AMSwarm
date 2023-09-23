@@ -15,6 +15,7 @@ Simulator :: Simulator(int cf_num, bool read_cf, int num_drones, bool use_model,
     VERBOSE = params["verbose"].as<int>();
     
     num = params["num"].as<int>();
+    num_up = params["num_up"].as<int>();
     if(read_config)
         num_drone = num_drones;
     else
@@ -309,8 +310,12 @@ void Simulator :: runSimulation(){
             save_data_2.open(path+"/data/point_to_point/config_data/varying_agents/obs_" + std::to_string(num_obs) +"/results_am_qd"+folder_name.str()+"/sim_residue_drone_" +std :: to_string(num_drone)+"_config_"+std :: to_string(config_num)+".txt");
         }
     }
-    else
+    else{
         save_data.open(path+"/data/sim_data.txt");
+        save_data_2.open(path+"/data/sim_data_upsampled_x.txt");
+        save_data_3.open(path+"/data/sim_data_upsampled_y.txt");
+        save_data_4.open(path+"/data/sim_data_upsampled_z.txt");
+    }
     auto start = std :: chrono :: high_resolution_clock::now();            
     
     for(sim_iter = 0; sim_iter < max_time/dt; sim_iter++){
@@ -326,13 +331,39 @@ void Simulator :: runSimulation(){
         mission_time = (sim_iter+1)*dt; 
         save_data << agents_x << "\n" << agents_y << "\n" << agents_z << "\n";
         
+        Eigen :: ArrayXXf temp_x_upsampled((int)(num_up/num), num_drone), 
+                          temp_y_upsampled((int)(num_up/num), num_drone), 
+                          temp_z_upsampled((int)(num_up/num), num_drone),
+                          temp_vx_upsampled((int)(num_up/num), num_drone), 
+                          temp_vy_upsampled((int)(num_up/num), num_drone), 
+                          temp_vz_upsampled((int)(num_up/num), num_drone),
+                          temp_ax_upsampled((int)(num_up/num), num_drone), 
+                          temp_ay_upsampled((int)(num_up/num), num_drone), 
+                          temp_az_upsampled((int)(num_up/num), num_drone);
         for(int i = 0; i < num_drone; i++){
-            save_data_2 << prob_data[i].res_x_static_obs_norm << " " << prob_data[i].res_y_static_obs_norm 
-                        << " " << prob_data[i].res_x_drone_norm << " " << prob_data[i].res_y_drone_norm << " " << prob_data[i].res_z_drone_norm
-                        << " " << prob_data[i].res_x_vel_norm << " " << prob_data[i].res_y_vel_norm << " " << prob_data[i].res_z_vel_norm
-                        << " " << prob_data[i].res_x_acc_norm << " " << prob_data[i].res_y_acc_norm << " " << prob_data[i].res_z_acc_norm
-                        << " " << prob_data[i].res_x_ineq_norm << " " << prob_data[i].res_y_ineq_norm << " " << prob_data[i].res_z_ineq_norm << "\n";
+            temp_x_upsampled.col(i) = prob_data[i].x_up.topRows((int)(num_up/num));
+            temp_y_upsampled.col(i) = prob_data[i].y_up.topRows((int)(num_up/num));
+            temp_z_upsampled.col(i) = prob_data[i].z_up.topRows((int)(num_up/num));
+
+            temp_vx_upsampled.col(i) = prob_data[i].xdot_up.topRows((int)(num_up/num));
+            temp_vy_upsampled.col(i) = prob_data[i].ydot_up.topRows((int)(num_up/num));
+            temp_vz_upsampled.col(i) = prob_data[i].zdot_up.topRows((int)(num_up/num));
+
+            temp_ax_upsampled.col(i) = prob_data[i].xddot_up.topRows((int)(num_up/num));
+            temp_ay_upsampled.col(i) = prob_data[i].yddot_up.topRows((int)(num_up/num));
+            temp_az_upsampled.col(i) = prob_data[i].zddot_up.topRows((int)(num_up/num));
         }
+        save_data_2 << temp_x_upsampled.transpose() << "\n" << temp_vx_upsampled.transpose() << "\n" << temp_ax_upsampled.transpose() << "\n"; 
+        save_data_3 << temp_y_upsampled.transpose() << "\n" << temp_vy_upsampled.transpose() << "\n" << temp_ay_upsampled.transpose() << "\n";
+        save_data_4 << temp_z_upsampled.transpose() << "\n" << temp_vz_upsampled.transpose() << "\n" << temp_az_upsampled.transpose() << "\n";
+
+        // for(int i = 0; i < num_drone; i++){
+        //     save_data_2 << prob_data[i].res_x_static_obs_norm << " " << prob_data[i].res_y_static_obs_norm 
+        //                 << " " << prob_data[i].res_x_drone_norm << " " << prob_data[i].res_y_drone_norm << " " << prob_data[i].res_z_drone_norm
+        //                 << " " << prob_data[i].res_x_vel_norm << " " << prob_data[i].res_y_vel_norm << " " << prob_data[i].res_z_vel_norm
+        //                 << " " << prob_data[i].res_x_acc_norm << " " << prob_data[i].res_y_acc_norm << " " << prob_data[i].res_z_acc_norm
+        //                 << " " << prob_data[i].res_x_ineq_norm << " " << prob_data[i].res_y_ineq_norm << " " << prob_data[i].res_z_ineq_norm << "\n";
+        // }
 
 
         if(VERBOSE == 2){
@@ -350,6 +381,9 @@ void Simulator :: runSimulation(){
     auto end = std :: chrono :: high_resolution_clock::now();
     total_time = end - start;
     save_data.close();
+    save_data_2.close();
+    save_data_3.close();
+    save_data_4.close();
 }
 void Simulator :: calculateDistances(){
     std :: vector <float> temp_inter_agent, temp_agent_obs;

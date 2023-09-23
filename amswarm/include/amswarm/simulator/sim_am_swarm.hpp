@@ -11,7 +11,7 @@ class Simulator{
         void runSimulation();
         void saveMetrics();
     private:
-        std :: ofstream save_data, save_data_2;
+        std :: ofstream save_data, save_data_2, save_data_3, save_data_4;
 
         std :: string path;
         YAML :: Node params;
@@ -19,6 +19,7 @@ class Simulator{
         int config_num;
         int VERBOSE;
         int num;
+        int num_up;
         int num_drone;
         int sim_iter;
         bool read_config; 
@@ -58,6 +59,8 @@ class Simulator{
 
         std :: vector <float> smoothness_agent, traj_length_agent, comp_time_agent, inter_agent_dist, agent_obs_dist;
         int num_obs, num_obs_2;    
+
+
 
         void shareInformation();
         void runAlgorithm();
