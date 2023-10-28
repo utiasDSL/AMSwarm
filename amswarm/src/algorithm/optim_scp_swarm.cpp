@@ -8,7 +8,7 @@
 
 #include "yaml-cpp/yaml.h"
 
-#include "algorithm/optim_scp_swarm.hpp"
+#include "algorithm/scp/optim_scp_swarm.hpp"
 #include <eigen-quadprog/QuadProg.h>
 #include <eigen-quadprog/eigen_quadprog_api.h>
 

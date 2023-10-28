@@ -35,8 +35,8 @@ Change various parameters in ```some_file_name.yaml``` files of folder ```params
 Ours in action:  
 ![example](data/example.gif)
 
-### To do
-* Remove ROS dependency.
+### To-do
+* Numerical issue when start-goal line makes pi/2 angle
 
 ### Contact
 vivek.adajania@mail.utoronto.ca

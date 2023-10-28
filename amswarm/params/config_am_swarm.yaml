@@ -22,16 +22,16 @@ kappa:      10
 
 
 # @@ Optimizer Parameters
-max_iter: 200                                         # alternating minimization iterations        
-max_time: 60                                          # maximum simulation time
-thresold: 0.005                                       # convergence thresold
+max_iter: 200                                                 
+max_time: 60                                          
+thresold: 0.005                                       
 
-order_smoothness:  2                                  # smoothness cost (q == 3 jerk, q == 4 snap)
-weight_goal:       5000                               # goal cost weight
-weight_smoothness: 150                                # smoothness cost weight
-delta_aggressive:  1.0                                # option no longer available
+order_smoothness:  2                                  
+weight_goal:       5000                               
+weight_smoothness: 150                                
+delta_aggressive:  1.0                                
 
-delta_static_obs: 1.20                                # delta penalty weight 
+delta_static_obs: 1.20                                 
 delta_drone:      1.15
 delta_vel:        1.33
 delta_acc:        1.30
@@ -39,7 +39,7 @@ delta_jerk:       1.30
 delta_snap:       1.30
 delta_ineq:       1.30
 
-rho_static_obs_max: 200000                            # maximum penalty weight
+rho_static_obs_max: 200000                            
 rho_drone_max:      200000
 rho_vel_max:        200000
 rho_acc_max:        200000
@@ -61,13 +61,13 @@ f_min: 0.3    # 0.3g
 
 acc_max: 2.8
 
-a_drone: 0.10                                         # quadrotor x-dimension
-b_drone: 0.10                                         # quadrotor y-dimension
-c_drone: 0.20                                         # quadrotor z-dimension
+a_drone: 0.10                                         
+b_drone: 0.10                                         
+c_drone: 0.20                                         
 
-prox_agent: 0.2                                       # distance parameter used to select neighbour
-prox_obs: 0.2                                         # option no longer available
-buffer: 0.05                                          # buffer for inter-agent collision
+prox_agent: 0.2                                       
+prox_obs: 0.2                                         
+buffer: 0.05                                          
 
 
 # @@ Room limits

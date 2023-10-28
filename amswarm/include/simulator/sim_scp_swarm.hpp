@@ -1,7 +1,7 @@
 #pragma once
 #include <fstream>
 #include <chrono>
-#include "algorithm/optim_scp_swarm.hpp"
+#include "algorithm/scp/optim_scp_swarm.hpp"
 
 class Simulator{
     public:
