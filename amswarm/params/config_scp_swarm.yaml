@@ -23,7 +23,7 @@ kappa:      5
 max_time:   20
 
 order_smoothness: 2
-weight_goal:       7000
+weight_goal:       1000
 weight_smoothness: 100
 weight_quad_slack: 50
 weight_lin_slack: 50000
