@@ -3,7 +3,7 @@
 #include <ros/package.h>
 #include <ros/ros.h>
 
-#include "amswarm/simulator/sim_am_swarm.hpp"
+#include "simulator/sim_am_swarm.hpp"
 
 int main()
 {

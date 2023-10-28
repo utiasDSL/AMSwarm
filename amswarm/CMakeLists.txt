@@ -28,7 +28,13 @@ ${catkin_INCLUDE_DIRS}
 )
 
 # AM 
-add_library(lib_am_swarm src/algorithm/optim_am_swarm.cpp src/simulator/sim_am_swarm.cpp)
+add_library(lib_am_swarm 
+            src/algorithm/obstacles_utils.cpp
+            src/algorithm/trajectory_utils.cpp
+            src/algorithm/solve_position_var.cpp
+            src/algorithm/solve_polar_var.cpp
+            src/algorithm/run_trajectory_optimizer.cpp 
+            src/simulator/sim_am_swarm.cpp)
 add_executable(swarm_am_nav src/main_am_swarm.cpp)
 add_dependencies(swarm_am_nav ${catkin_EXPORTED_TARGETS})
 target_link_libraries(swarm_am_nav lib_am_swarm eigen-quadprog yaml-cpp ${catkin_LIBRARIES})

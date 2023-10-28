@@ -18,34 +18,35 @@ t_plan:     3
 num_up:     300
 dist_stop:  0.2
 free_space: false
-kappa:      5
+kappa:      10
 
 
 # @@ Optimizer Parameters
-max_iter: 3000                  
-max_time: 20
-thresold: 0.01
+max_iter: 200                                         # alternating minimization iterations        
+max_time: 60                                          # maximum simulation time
+thresold: 0.005                                       # convergence thresold
 
-order_smoothness:  2
-weight_goal:       7000        
-weight_smoothness: 100
-delta_aggressive:  1
+order_smoothness:  2                                  # smoothness cost (q == 3 jerk, q == 4 snap)
+weight_goal:       5000                               # goal cost weight
+weight_smoothness: 150                                # smoothness cost weight
+delta_aggressive:  1.0                                # option no longer available
 
-delta_static_obs: 1.3
-delta_drone:      1.3
-delta_vel:        1.3
-delta_acc:        1.3
-delta_jerk:       1.3
-delta_snap:       1.3
-delta_ineq:       1.3
+delta_static_obs: 1.20                                # delta penalty weight 
+delta_drone:      1.15
+delta_vel:        1.33
+delta_acc:        1.30
+delta_jerk:       1.30
+delta_snap:       1.30
+delta_ineq:       1.30
 
-rho_static_obs_max: 50000000
-rho_drone_max:      50000000
-rho_vel_max:        50000000
-rho_acc_max:        50000000
-rho_jerk_max:       50000000
-rho_snap_max:       50000000
-rho_ineq_max:       50000000
+rho_static_obs_max: 200000                            # maximum penalty weight
+rho_drone_max:      200000
+rho_vel_max:        200000
+rho_acc_max:        200000
+rho_jerk_max:       200000
+rho_snap_max:       200000
+rho_ineq_max:       200000
+
 
 # true kinematic values
 vel_max: 1.5
@@ -58,24 +59,21 @@ gravity: 9.8
 f_max: 1.5    # 1.5g
 f_min: 0.3    # 0.3g
 
-
 acc_max: 2.8
 
-prox_agent: 0.2
-prox_obs: 0.2
+a_drone: 0.10                                         # quadrotor x-dimension
+b_drone: 0.10                                         # quadrotor y-dimension
+c_drone: 0.20                                         # quadrotor z-dimension
 
-buffer: 0.05
-
-# @@ Crazyflie Configuration 
-a_drone: 0.0675
-b_drone: 0.0675
-c_drone: 0.200
+prox_agent: 0.2                                       # distance parameter used to select neighbour
+prox_obs: 0.2                                         # option no longer available
+buffer: 0.05                                          # buffer for inter-agent collision
 
 
 # @@ Room limits
 x_lim: [-2.0, 2.0]
 y_lim: [-2.0, 2.0]
-z_lim: [+0.2, 2.2]
+z_lim: [+0.1, 2.2]
 
 
 

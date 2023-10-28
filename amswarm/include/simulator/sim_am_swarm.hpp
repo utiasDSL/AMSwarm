@@ -1,7 +1,8 @@
 #pragma once
 #include <fstream>
 #include <chrono>
-#include "amswarm/algorithm/optim_am_batch_swarm.hpp"
+#include <sstream>
+#include "algorithm/amswarm/run_trajectory_optimizer.hpp"
 
 class Simulator{
     public:
@@ -10,7 +11,7 @@ class Simulator{
         void runSimulation();
         void saveMetrics();
     private:
-        std :: ofstream save_data, save_data_2;
+        std :: ofstream save_data, save_data_2, save_data_3, save_data_4;
 
         std :: string path;
         YAML :: Node params;
@@ -18,6 +19,7 @@ class Simulator{
         int config_num;
         int VERBOSE;
         int num;
+        int num_up;
         int num_drone;
         int sim_iter;
         bool read_config; 
@@ -33,11 +35,12 @@ class Simulator{
         float dist_stop;
         float dt;
 
+        bool out_space;
         float mission_time;
         bool collision_agent, collision_obstacle;
         std :: chrono :: duration<double, std::milli> total_time;
 
-        Optim :: probData *prob_data;
+        probData *prob_data;
 
         Eigen :: ArrayXXf agents_x, 
                         agents_y, 
@@ -47,19 +50,22 @@ class Simulator{
                         arc_length,
                         dist_to_goal;
 
-        
+        std :: stringstream folder_name;
         std :: vector<std :: vector<float>> _init_drone;
         std :: vector<std :: vector<float>> _goal_drone;
 
         std :: vector<std :: vector<float>> _pos_static_obs;
         std :: vector<std :: vector<float>> _dim_static_obs;
 
-        std :: vector <float> smoothness_agent, traj_length_agent, comp_time_agent;
-        int num_obs;    
+        std :: vector <float> smoothness_agent, traj_length_agent, comp_time_agent, inter_agent_dist, agent_obs_dist;
+        int num_obs, num_obs_2;    
+
+
 
         void shareInformation();
         void runAlgorithm();
         void checkCollision();
         void checkAtGoal();
         void checkViolation();
+        void calculateDistances();
 };

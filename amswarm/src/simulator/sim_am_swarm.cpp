@@ -1,4 +1,4 @@
-#include "amswarm/simulator/sim_am_swarm.hpp"
+#include "simulator/sim_am_swarm.hpp"
 #include <thread>
 #include <ros/package.h>
 #include <ros/ros.h>
@@ -36,7 +36,7 @@ Simulator :: Simulator(int cf_num, bool read_cf, int num_drones, bool use_model,
     collision_agent = false;
     collision_obstacle = false;
 
-    prob_data = new Optim::probData[num_drone];
+    prob_data = new probData[num_drone];
     
 
     agents_x = Eigen :: ArrayXXf(num_drone, num); 
@@ -85,7 +85,7 @@ Simulator :: Simulator(int cf_num, bool read_cf, int num_drones, bool use_model,
             k+=3;
 
         config_data.conservativeResize(k, 1);
-        config_data = (Optim :: reshape(config_data, 3, num_drone*2 + num_obs*2)).transpose();
+        config_data = (reshape(config_data, 3, num_drone*2 + num_obs*2)).transpose();
         
         Eigen :: ArrayXXf obs_data = config_data.bottomRows(2*num_obs);
         
@@ -231,7 +231,7 @@ void Simulator :: runAlgorithm(){
     // Start Threads
     auto start = std :: chrono :: high_resolution_clock::now(); 
     for(int i = 0; i < num_drone; i++){
-        agent_thread[i] = std :: thread(Optim :: deployAgent, std::ref(prob_data[i]), VERBOSE);
+        agent_thread[i] = std :: thread(deployAgent, std::ref(prob_data[i]), VERBOSE);
     }
 
     // Waiting for threads to terminate
